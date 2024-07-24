@@ -1,0 +1,6 @@
+output-dir: "{cwd}/generated"
+options:
+  "@typespec/openapi3":
+    emitter-output-dir: "{output-dir}/"
+emit:
+  - "@typespec/openapi3"

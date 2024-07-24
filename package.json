@@ -1,0 +1,52 @@
+{
+  "name": "typespec-orval",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.51.11",
+    "axios": "^1.7.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@faker-js/faker": "^8.4.1",
+    "@storybook/addon-essentials": "^8.2.2",
+    "@storybook/addon-interactions": "^8.2.2",
+    "@storybook/addon-links": "^8.2.2",
+    "@storybook/addon-onboarding": "^8.2.2",
+    "@storybook/blocks": "^8.2.2",
+    "@storybook/react": "^8.2.2",
+    "@storybook/react-vite": "^8.2.2",
+    "@storybook/test": "^8.2.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@typespec/compiler": "latest",
+    "@typespec/http": "latest",
+    "@typespec/openapi3": "latest",
+    "@typespec/rest": "latest",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-storybook": "^0.8.0",
+    "msw": "^2.3.1",
+    "msw-storybook-addon": "^2.0.3",
+    "orval": "^6.31.0",
+    "prettier": "3.3.2",
+    "storybook": "^8.2.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}
