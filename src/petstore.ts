@@ -37,7 +37,7 @@ export interface Pet {
 }
 
 export const petsList = (
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<AxiosResponse<Pet[]>> => {
   return axios.default.get(`/pets`, options);
 };
@@ -50,7 +50,9 @@ export const getPetsListQueryOptions = <
   TData = Awaited<ReturnType<typeof petsList>>,
   TError = AxiosError<unknown>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof petsList>>, TError, TData>;
+  query?: Partial<
+    UseQueryOptions<Awaited<ReturnType<typeof petsList>>, TError, TData>
+  >;
   axios?: AxiosRequestConfig;
 }) => {
   const { query: queryOptions, axios: axiosOptions } = options ?? {};
@@ -77,7 +79,9 @@ export const usePetsList = <
   TData = Awaited<ReturnType<typeof petsList>>,
   TError = AxiosError<unknown>,
 >(options?: {
-  query?: UseQueryOptions<Awaited<ReturnType<typeof petsList>>, TError, TData>;
+  query?: Partial<
+    UseQueryOptions<Awaited<ReturnType<typeof petsList>>, TError, TData>
+  >;
   axios?: AxiosRequestConfig;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getPetsListQueryOptions(options);
@@ -94,7 +98,7 @@ export const usePetsList = <
 export const getPetsListResponseMock = (): Pet[] =>
   Array.from(
     { length: faker.number.int({ min: 1, max: 10 }) },
-    (_, i) => i + 1
+    (_, i) => i + 1,
   ).map(() => ({
     age: faker.number.int({ min: 0, max: 100 }),
     kind: faker.helpers.arrayElement(["dog", "cat", "fish"] as const),
@@ -105,8 +109,8 @@ export const getPetsListMockHandler = (
   overrideResponse?:
     | Pet[]
     | ((
-        info: Parameters<Parameters<typeof http.get>[1]>[0]
-      ) => Promise<Pet[]> | Pet[])
+        info: Parameters<Parameters<typeof http.get>[1]>[0],
+      ) => Promise<Pet[]> | Pet[]),
 ) => {
   return http.get("*/pets", async (info) => {
     await delay(1000);
@@ -116,14 +120,14 @@ export const getPetsListMockHandler = (
           ? typeof overrideResponse === "function"
             ? await overrideResponse(info)
             : overrideResponse
-          : getPetsListResponseMock()
+          : getPetsListResponseMock(),
       ),
       {
         status: 200,
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
   });
 };
